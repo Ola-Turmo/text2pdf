@@ -1,0 +1,185 @@
+/* ebook.css — eBook reader style
+   Comfortable reading experience, serif body text,
+   designed for long-form documents and manuscripts.
+*/
+
+@page {
+  size: A5;  /* typical ebook size */
+  margin: 18mm 16mm 20mm 16mm;
+
+  @bottom-right {
+    content: counter(page);
+    font-size: 8.5pt;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #888;
+    font-style: italic;
+  }
+
+  @top-left, @top-center, @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-center { content: none; }
+}
+
+body {
+  font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.85;
+  color: #2c2c2c;
+  background: #fff;
+  max-width: 70ch;   /* optimal reading line length */
+  margin: 0 auto;
+}
+
+/* ---- Headings ---- */
+h1 {
+  font-size: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 2em 0 0.8em 0;
+  page-break-after: avoid;
+  letter-spacing: 0.02em;
+  font-variant: small-caps;
+}
+h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 1.8em 0 0.5em 0;
+  page-break-after: avoid;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.15em;
+}
+h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #2c2c2c;
+  margin: 1.4em 0 0.4em 0;
+  page-break-after: avoid;
+}
+h4, h5, h6 {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+  margin: 1em 0 0.3em 0;
+  font-family: "DejaVu Sans", Arial, sans-serif;
+}
+
+/* Drop cap on first paragraph of each chapter */
+.page-break + p:first-of-type::first-letter,
+#toc ~ p:first-of-type::first-letter {
+  font-size: 3.4em;
+  float: left;
+  line-height: 0.78;
+  margin-right: 0.1em;
+  margin-top: 0.05em;
+  font-weight: bold;
+  color: #4a4a4a;
+  font-family: Georgia, serif;
+}
+
+/* ---- Paragraphs ---- */
+p {
+  margin: 0 0 0.6em 0;
+  orphans: 3;
+  widows: 3;
+  text-align: justify;
+}
+h1 + p, h2 + p, h3 + p,
+.page-break + p, #toc + p {
+  text-indent: 0;
+}
+
+/* ---- Lists ---- */
+ul, ol {
+  margin: 0.5em 0 0.7em 0;
+  padding-left: 1.6em;
+}
+li { margin-bottom: 0.3em; }
+
+/* ---- Blockquotes ---- */
+blockquote {
+  margin: 1em 1.5em;
+  padding: 0.5em 1em;
+  border: none;
+  border-left: 3px solid #bbb;
+  font-style: italic;
+  color: #555;
+  font-size: 0.97em;
+  background: #fafafa;
+}
+blockquote p { margin-bottom: 0.3em; }
+
+/* ---- Code ---- */
+pre {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 0.8em 1em;
+  font-family: "DejaVu Sans Mono", "Courier New", Courier, monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin: 0.8em 0;
+  page-break-inside: avoid;
+  white-space: pre-wrap;
+}
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9em;
+  background: #f5f5f5;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+pre code { background: none; padding: 0; }
+
+/* ---- Tables ---- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.92em;
+  page-break-inside: avoid;
+}
+th {
+  background: #f0f0f0;
+  font-weight: bold;
+  padding: 0.4em 0.7em;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+td {
+  padding: 0.35em 0.7em;
+  border: 1px solid #ccc;
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: #fafafa; }
+
+/* ---- Images ---- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  page-break-inside: avoid;
+}
+
+/* ---- HR ---- */
+hr {
+  border: none;
+  text-align: center;
+  margin: 2em 0;
+  color: #999;
+  font-size: 1.2em;
+  letter-spacing: 0.5em;
+}
+hr::after {
+  content: "· · ·";
+}
+
+/* ---- TOC ---- */
+#toc { margin-bottom: 2em; }
+#toc h2 { font-size: 1.2em; text-align: center; margin-bottom: 0.8em; }
+#toc ol { list-style-type: decimal; padding-left: 1.5em; }
+#toc li { margin-bottom: 0.4em; }
+
+/* ---- Page break ---- */
+.page-break { page-break-before: always; }

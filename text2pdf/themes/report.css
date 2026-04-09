@@ -1,0 +1,234 @@
+/* report.css — Professional report style
+   Clean, formal, publication-ready output suitable for business reports,
+   technical documents, and formal papers.
+*/
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 25mm 18mm;
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-size: 9pt;
+    color: #555;
+    font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+  }
+
+  @top-left {
+    content: none;
+  }
+}
+
+body {
+  font-family: "DejaVu Serif", Georgia, "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #fff;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* ---- Headings ---- */
+h1 {
+  font-family: "DejaVu Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 1.55em;
+  font-weight: 700;
+  color: #0d2137;
+  border-bottom: 2px solid #0d2137;
+  padding-bottom: 0.15em;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  break-before: avoid-page;
+  page-break-before: avoid;
+  string-set: chapter content(before);
+}
+
+h2 {
+  font-family: "DejaVu Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #1a3a5c;
+  border-bottom: 1px solid #8da4bb;
+  padding-bottom: 0.1em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  break-before: avoid-page;
+  page-break-before: avoid;
+}
+
+h3 {
+  font-family: "DejaVu Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: #2c5a80;
+  margin-top: 1.3em;
+  margin-bottom: 0.4em;
+  break-before: avoid-page;
+  page-break-before: avoid;
+}
+
+h4, h5, h6 {
+  font-family: "DejaVu Sans", -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+}
+
+/* ---- Paragraphs ---- */
+p {
+  margin: 0 0 0.7em 0;
+  text-align: justify;
+  orphans: 3;
+  widows: 3;
+}
+p + p {
+  text-indent: 1.4em;
+}
+h1 + p, h2 + p, h3 + p,
+h4 + p, h5 + p, h6 + p,
+.page-break + p, #toc + p {
+  text-indent: 0;
+}
+
+/* ---- Lists ---- */
+ul, ol {
+  margin: 0.5em 0 0.8em 0;
+  padding-left: 1.8em;
+}
+li {
+  margin-bottom: 0.3em;
+  line-height: 1.6;
+}
+ul > li::marker { color: #0d2137; }
+ol > li::marker { color: #0d2137; font-weight: 600; }
+
+/* ---- Blockquotes ---- */
+blockquote {
+  margin: 1em 2em;
+  padding: 0.6em 1.2em;
+  border-left: 4px solid #0d2137;
+  background: #f0f4f8;
+  font-style: italic;
+  color: #2c3e50;
+  font-size: 0.97em;
+  border-radius: 0 4px 4px 0;
+}
+blockquote p { margin-bottom: 0.3em; }
+
+/* ---- Code ---- */
+pre {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-left: 4px solid #0d2137;
+  border-radius: 0 4px 4px 0;
+  padding: 0.9em 1.1em;
+  font-family: "DejaVu Sans Mono", "Courier New", Courier, monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin: 1em 0;
+  page-break-inside: avoid;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.88em;
+  background: #f0f4f8;
+  color: #c0392b;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  border: 1px solid #dde3ea;
+}
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border: none;
+  font-size: 1em;
+}
+
+/* ---- Tables ---- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: 0.9em;
+  page-break-inside: avoid;
+}
+th {
+  background: #0d2137;
+  color: #fff;
+  font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+  padding: 0.45em 0.8em;
+  text-align: left;
+  border: 1px solid #062035;
+  font-size: 0.92em;
+  letter-spacing: 0.02em;
+}
+td {
+  padding: 0.35em 0.8em;
+  border: 1px solid #c8d6e0;
+  vertical-align: top;
+  background: #fff;
+}
+tr:nth-child(even) td { background: #f4f8fb; }
+tr:hover td { background: #e8f0f7; }
+
+/* ---- Images ---- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  page-break-inside: avoid;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* ---- HR ---- */
+hr {
+  border: none;
+  border-top: 1px solid #c8d6e0;
+  margin: 2em 0;
+}
+
+/* ---- Links ---- */
+a {
+  color: #0d5aa0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- TOC ---- */
+#toc {
+  margin-bottom: 2.5em;
+  page-break-after: always;
+}
+#toc h2 {
+  font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 1.2em;
+  color: #0d2137;
+  border-bottom: 2px solid #0d2137;
+  margin-bottom: 0.8em;
+}
+#toc ol {
+  list-style-type: decimal;
+  padding-left: 1.5em;
+  font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+}
+#toc li { margin-bottom: 0.35em; }
+#toc a {
+  text-decoration: none;
+  color: #0d5aa0;
+}
+
+/* ---- Page break utility ---- */
+.page-break { page-break-before: always; }
+
+/* ---- Heading counters ---- */
+body { counter-reset: h1-counter h2-counter h3-counter; }
+h1 { counter-increment: h1-counter; counter-reset: h2-counter; }
+h2 { counter-increment: h2-counter; counter-reset: h3-counter; }

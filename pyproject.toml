@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "text2pdf"
+version = "0.1.0"
+description = "Convert plain text into high-quality PDFs with auto-structure detection"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Ola Turmo", email = "ola@example.com"}
+]
+keywords = ["pdf", "markdown", "html", "converter", "typesetting", "paged-media"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+]
+dependencies = [
+    "weasyprint>=60.0",
+    "markdown>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+text2pdf = "text2pdf.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Ola-Turmo/text2pdf"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["text2pdf", "text2pdf.*"]
+exclude = ["text2pdf.egg-info", "build", "tests*"]
+
+[tool.setuptools.package-data]
+"text2pdf.themes" = ["*.css"]
